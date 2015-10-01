@@ -28,12 +28,10 @@ goods_t * create_shelf(int n)
 void add_to_shelf(goods_t newItem, goods_t *oldList)
 {
 
-
+  void *ptr2 = (void *) calloc(1, sizeof(goods_t));
   for (int i = 0; i < 100; i++)
     {
       void *ptr = (oldList + i);
-      
-      void *ptr2 = (void *) calloc(1, sizeof(goods_t));
       int n = memcmp(ptr, ptr2, sizeof(goods_t));
       if (!n)
 	{
@@ -41,6 +39,7 @@ void add_to_shelf(goods_t newItem, goods_t *oldList)
 	  return;
 	}
     }
+  free(ptr2);
 }
 
 
